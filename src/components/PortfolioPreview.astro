@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import dataProjects from '../helpers/projects.json';
 
 interface Props {
 	project: CollectionEntry<'work'>;
@@ -9,7 +10,9 @@ const { data, slug } = Astro.props.project;
 ---
 
 <a class="card" href={`/work/${slug}`}>
-	<span class="title">{"Planificador de gastos"}</span>
+	{dataProjects.data.map((datos) => {
+		<span class="title">{console.log(datos.title)}</span>
+	})}
 	<img src="../../public/assets/gastos.png" alt={data.img_alt || ''} loading="lazy" decoding="async" />
 </a>
 
